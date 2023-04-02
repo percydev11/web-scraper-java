@@ -17,15 +17,16 @@ public class WebPage {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "url")
     private String url;
 
-    @Column(name = "tittle")
+    @Column(name = "title")
     private String title;
 
 
-    @Column(name = "description")
-    private String description;
+
 }
 
