@@ -1,4 +1,10 @@
 package com.webscraperjava.webscraper.repositories;
 
-public class SearchRepository {
+import com.webscraperjava.webscraper.entities.WebPage;
+
+import java.util.List;
+
+public interface SearchRepository {
+
+     List<WebPage> search(String textSearch);
 }
