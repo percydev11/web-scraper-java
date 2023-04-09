@@ -1,67 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Results</title>
-    <link rel="stylesheet" href="results.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="results.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
     />
-  </head>
-  <body>
-    <div id="main">
-      <img id="logo" src="img/logo2.png" />
-      <input type="text" id="txtSearch" />
-      <hr />
-    </div>
+</head>
+<body>
+<div id="main">
+    <img id="logo" src="img/logo2.png"/>
+    <input type="text" id="txtSearch"/>
+    <hr/>
+</div>
 
-    <div id="results">
+<div id="results">
       <span class="total-results"
-        >About 334,000,000 results (0.53 seconds)
+      >About 334,000,000 results (0.53 seconds)
       </span>
-      <div class="result">
+    <div class="result">
         <h3>Spring Boot</h3>
         <span
-          >Level up your Java code and explore what Spring can do for you. ...
+        >Level up your Java code and explore what Spring can do for you. ...
           Frameworks for fast, secure, and responsive web applications connected
           to any data store
         </span>
-      </div>
-
-      <div class="result">
-        <h3>Spring Boot</h3>
-        <span
-          >Level up your Java code and explore what Spring can do for you. ...
-          Frameworks for fast, secure, and responsive web applications connected
-          to any data store
-        </span>
-      </div>
-
-      <div class="result">
-        <h3>Spring Boot</h3>
-        <span
-          >Level up your Java code and explore what Spring can do for you. ...
-          Frameworks for fast, secure, and responsive web applications connected
-          to any data store
-        </span>
-      </div>
     </div>
 
-    <script>
-      let aux = document.location.href.split("?query=");
-      let query = aux[1];
-      document.getElementById("txtSearch").value = query;
+    <div class="result">
+        <h3>Spring Boot</h3>
+        <span
+        >Level up your Java code and explore what Spring can do for you. ...
+          Frameworks for fast, secure, and responsive web applications connected
+          to any data store
+        </span>
+    </div>
 
-      fetch("http://localhost:8080/api/search?query=" + query)
+    <div class="result">
+        <h3>Spring Boot</h3>
+        <span
+        >Level up your Java code and explore what Spring can do for you. ...
+          Frameworks for fast, secure, and responsive web applications connected
+          to any data store
+        </span>
+    </div>
+</div>
+
+<script>
+    let aux = document.location.href.split("?query=");
+    let query = aux[1];
+    document.getElementById("txtSearch").value = query;
+
+    fetch("http://localhost:8080/api/search?query=" + query)
         .then((response) => response.json())
         .then((json) => {
-          console.log(json);
+            console.log(json);
+            for (let resultSearch of json) {
+                console.log(resultSearch)
+            }
         });
-    </script>
-  </body>
+
+    function getHtmlResultSearch() {
+        let title = 'Spring Boot';
+        let description = 'Level up your Java code and explore what Spring can do for you. ...\n' +
+            '        Frameworks for fast, secure, and responsive web applications connected\n' +
+            '          to any data store';
+        return `<div class="result">
+            <h3>${title}</h3>
+            <span>${description}
+        </span>
+        </div>`
+
+    }
+</script>
+</body>
 </html>
