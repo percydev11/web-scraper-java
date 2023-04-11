@@ -9,10 +9,18 @@
   </head>
   <body>
     <div id="main">
-      <img id="logo" src="img/logo2.png" />
-      <input type="text" />
-      <button>Google Search</button>
+      <img id="logo" src="img/logo2.png"  alt="Google Logo"/>
+      <input id="searchInput" type="text" />
+      <button onclick="search()">Search in Google</button>
       <button>I'm Feeling Lucky</button>
     </div>
+
+  <script>
+    function search() {
+      let textSearch = document.getElementById('searchInput').value;
+      document.location.href = 'results.html?query=' + textSearch;
+
+    }
+  </script>
   </body>
 </html>

@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="main">
-    <img id="logo" src="img/logo2.png"/>
+    <img id="logo" src="img/logo2.png" alt="Google Logo"/>
     <input type="text" id="txtSearch"/>
     <hr/>
 </div>
@@ -24,31 +24,34 @@
       <span class="total-results"
       >About 334,000,000 results (0.53 seconds)
       </span>
-    <div class="result">
-        <h3>Spring Boot</h3>
-        <span
-        >Level up your Java code and explore what Spring can do for you. ...
+    <div id="links">
+        <div class="result">
+            <h3>Spring Boot</h3>
+            <span
+            >Level up your Java code and explore what Spring can do for you. ...
           Frameworks for fast, secure, and responsive web applications connected
           to any data store
         </span>
-    </div>
+        </div>
 
-    <div class="result">
-        <h3>Spring Boot</h3>
-        <span
-        >Level up your Java code and explore what Spring can do for you. ...
+        <div class="result">
+            <h3>Spring Boot</h3>
+            <span
+            >Level up your Java code and explore what Spring can do for you. ...
           Frameworks for fast, secure, and responsive web applications connected
           to any data store
         </span>
-    </div>
+        </div>
 
-    <div class="result">
-        <h3>Spring Boot</h3>
-        <span
-        >Level up your Java code and explore what Spring can do for you. ...
+        <div class="result">
+            <h3>Spring Boot</h3>
+            <span
+            >Level up your Java code and explore what Spring can do for you. ...
           Frameworks for fast, secure, and responsive web applications connected
           to any data store
         </span>
+        </div>
+
     </div>
 </div>
 
@@ -61,19 +64,18 @@
         .then((response) => response.json())
         .then((json) => {
             console.log(json);
+
+            let html = '';
             for (let resultSearch of json) {
-                console.log(resultSearch)
+                html += getHtmlResultSearch(resultSearch)
             }
+            document.getElementById("links").outerHTML = html;
         });
 
-    function getHtmlResultSearch() {
-        let title = 'Spring Boot';
-        let description = 'Level up your Java code and explore what Spring can do for you. ...\n' +
-            '        Frameworks for fast, secure, and responsive web applications connected\n' +
-            '          to any data store';
+    function getHtmlResultSearch(resultSearch) {
         return `<div class="result">
-            <h3>${title}</h3>
-            <span>${description}
+            <h3><a href="${resultSearch.url}" target="_blank">${resultSearch.title}</h3></a>
+            <span>${resultSearch.description}
         </span>
         </div>`
 
