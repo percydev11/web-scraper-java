@@ -17,4 +17,8 @@ public class SearchService {
     public List<WebPage> search(String textSearch) {
         return repository.search(textSearch);
     }
+
+    public void save(WebPage webPage) {
+        repository.save(webPage);
+    }
 }
