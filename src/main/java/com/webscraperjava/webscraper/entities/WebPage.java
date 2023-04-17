@@ -12,6 +12,14 @@ import lombok.ToString;
 @ToString @EqualsAndHashCode
 public class WebPage {
 
+    public WebPage() {
+
+    }
+
+    public WebPage(String url) {
+        this.url = url;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
